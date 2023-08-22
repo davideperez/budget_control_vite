@@ -17,7 +17,7 @@ const Modal = ({setModal, animarModal, setAnimarModal, guardarGasto}) => {
         }, 500) 
     }
 
-    const handleSubmit = e => {
+    const handleSubmit = e   => {
         e.preventDefault()
 
         //validation
