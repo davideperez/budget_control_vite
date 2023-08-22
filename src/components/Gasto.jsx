@@ -1,4 +1,3 @@
-import React from 'react'
 import { formatearFecha } from '../helpers'
 import IconoAhorro from '../img/icono_ahorro.svg'
 import IconoCasa from '../img/icono_casa.svg'
