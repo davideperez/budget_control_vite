@@ -42,9 +42,8 @@ function App() {
     if (gasto.id) {
       //Update Expense
       const gastosActualizados = gastos.map( gastoOriginal => gastoOriginal.id === gasto.id ? gasto : gastoOriginal)
-      
       setGastos(gastosActualizados)
-
+      setGastoEditar({})
     } else {
       //Create Expense
       gasto.id = generarId()
@@ -102,6 +101,7 @@ function App() {
           setAnimarModal={setAnimarModal}
           guardarGasto={guardarGasto}
           gastoEditar={gastoEditar}
+          setGastoEditar={setGastoEditar}
         />
       }
     </div>
