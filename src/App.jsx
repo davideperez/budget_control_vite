@@ -9,8 +9,10 @@ function App() {
   const [gastos, setGastos] = useState([])
   const [presupuesto, setPresupuesto] = useState(0)
   const [budgetIsValid, setBudgetIsValid] = useState(false)
+  
   const [modal, setModal] = useState(false)
   const [animarModal, setAnimarModal] = useState(false)
+  
   const [gastoEditar, setGastoEditar] = useState({})
 
   useEffect(() => {
@@ -36,9 +38,20 @@ function App() {
   }
   
   const guardarGasto = gasto => {
-    gasto.id = generarId()
-    gasto.fecha = Date.now()
-    setGastos([...gastos, gasto])
+    
+    if (gasto.id) {
+      //Update Expense
+      const gastosActualizados = gastos.map( gastoOriginal => gastoOriginal.id === gasto.id ? gasto : gastoOriginal)
+      
+      setGastos(gastosActualizados)
+
+    } else {
+      //Create Expense
+      gasto.id = generarId()
+      gasto.fecha = Date.now()
+      setGastos([...gastos, gasto])
+
+    }  
 
     setAnimarModal(false)
     setTimeout(() => {
