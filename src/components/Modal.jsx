@@ -73,21 +73,21 @@ const Modal = ({
                 <legend>{gastoEditar.nombre ? 'Edit Expense' : 'New Expense'}</legend>
                 { mensaje && <Mensaje tipo='error' >{ mensaje }</Mensaje> } 
                 <div className='campo'>
-                    <label htmlFor="nombre">Nombre Gasto</label>
+                    <label htmlFor="nombre">Expense Name</label>
                     <input 
                         id='nombre'
                         type="text" 
-                        placeholder='Ingresa el nombre del Gasto'
+                        placeholder='Enter the name of the expense..'
                         value={nombre}
                         onChange={ e => setNombre(e.target.value)}
                     />
                 </div>
                 <div className='campo'>
-                    <label htmlFor="cantidad">Cantidad</label>
+                    <label htmlFor="cantidad">Amount</label>
                     <input 
                         id='cantidad'
                         type="number" 
-                        placeholder='Ingresa el cantidad del gasto, ej: 300'
+                        placeholder='Enter the amount of the expense, ie: $300'
                         value={cantidad}
                         onChange={ e => setCantidad(Number(e.target.value))}
                     />
