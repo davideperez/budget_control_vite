@@ -27,11 +27,11 @@ const NuevoPresupuesto = ({
         <div className='contenedor-presupuesto contenedor sombra'>
             <form onSubmit={handlePresupuesto} className='formulario' action="">
                 <div className='campo'>
-                    <label htmlFor="">Definir Presupuesto</label>
+                    <label htmlFor="">Set a Budget</label>
                     <input
                         className='nuevo-presupuesto'
                         type="number"
-                        placeholder='Añáde tu presupuesto'
+                        placeholder='Add Budget'
                         value={presupuesto}
                         onChange={ e => setPresupuesto(Number(e.target.value))}
                     />
