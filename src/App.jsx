@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react'
+
 import Header from './components/Header'
+import Filtros from './components/Filtros'
 import ListadoGastos from './components/ListadoGastos'
 import Modal from './components/Modal'
+
 import { generarId } from './helpers'
 import IconoNuevoGasto from './img/nuevo-gasto.svg'
 
@@ -18,6 +21,10 @@ function App() {
   const [animarModal, setAnimarModal] = useState(false)
   
   const [gastoEditar, setGastoEditar] = useState({})
+
+  const [filtro, setFiltro] = useState('')
+  const [gastosFiltrados, setGastosFiltrados] = useState('')
+
 
   
   useEffect(() => {
@@ -37,6 +44,21 @@ function App() {
   
   }, [presupuesto])
   
+  //Save gastos to LocalStorage
+  useEffect(() => {
+    localStorage.setItem('gastos', JSON.stringify(gastos) ?? [])
+  }, [gastos])
+
+  //Filters the expenses.
+  useEffect(() => {
+    if (filtro) {
+      const gastosFiltrados = gastos.filter( gasto => gasto.categoria === filtro)
+
+      setGastosFiltrados(gastosFiltrados)
+    }
+  }, [filtro])
+  
+  //Saves presupuesto to local storage the first time the app charges.
   useEffect(() => {
     const presupuestoLS = Number(localStorage.getItem('presupuesto')) ?? 0
 
@@ -45,11 +67,6 @@ function App() {
     }
   }, [presupuesto])
 
-  //Save gastos in LocalStorage
-  useEffect(() => {
-    localStorage.setItem('gastos', JSON.stringify(gastos) ?? [])
-  }, [gastos])
-  
   const handleNuevoGasto = () => {
     setModal(true)
     setGastoEditar({})
@@ -100,6 +117,10 @@ function App() {
       {budgetIsValid && (
         <>
           <main>
+            <Filtros 
+              filtro={filtro}
+              setFiltro={setFiltro}
+            />
             <ListadoGastos 
               gastos={gastos}
               setGastoEditar={setGastoEditar}
