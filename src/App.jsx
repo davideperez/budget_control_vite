@@ -7,7 +7,9 @@ import IconoNuevoGasto from './img/nuevo-gasto.svg'
 
 function App() {
   const [gastos, setGastos] = useState([])
-  const [presupuesto, setPresupuesto] = useState(0)
+  const [presupuesto, setPresupuesto] = useState(
+    Number(localStorage.getItem('presupuesto')) ?? 0
+  )
   const [budgetIsValid, setBudgetIsValid] = useState(false)
   
   const [modal, setModal] = useState(false)
@@ -15,6 +17,7 @@ function App() {
   
   const [gastoEditar, setGastoEditar] = useState({})
 
+  
   useEffect(() => {
     if (Object.keys(gastoEditar).length > 0) {
       setModal(true)
@@ -25,8 +28,21 @@ function App() {
     
     }
   }, [gastoEditar])
-  
 
+  //Saves presupuesto to local storage.
+  useEffect(() => {
+    localStorage.setItem('presupuesto', presupuesto ?? 0)
+  
+  }, [presupuesto])
+  
+  useEffect(() => {
+    const presupuestoLS = Number(localStorage.getItem('presupuesto')) ?? 0
+
+    if (presupuestoLS > 0) {
+      setBudgetIsValid(true)
+    }
+  }, [presupuesto])
+  
   const handleNuevoGasto = () => {
     setModal(true)
     setGastoEditar({})
