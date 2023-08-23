@@ -32,7 +32,7 @@ const Gasto = ({gasto, setGastoEditar, eliminarGasto}) => {
     const leadingActions = () => (
         <LeadingActions>
             <SwipeAction onClick={()=> setGastoEditar(gasto)}>
-                Editar
+                Edit
             </SwipeAction>
         </LeadingActions>
     )
@@ -43,7 +43,7 @@ const Gasto = ({gasto, setGastoEditar, eliminarGasto}) => {
                 onClick={()=> eliminarGasto(id)}
                 destructive={true}
             >
-                Eliminar
+                Delete
             </SwipeAction>
         </TrailingActions>    
     )
@@ -64,7 +64,7 @@ const Gasto = ({gasto, setGastoEditar, eliminarGasto}) => {
                     <div className='descripcion-gasto'>
                         <p className='categoria'>{categoria}</p>
                         <p className='nombre'>{nombre }</p>
-                        <p className='fecha-gasto'> Agregado el: {''} <span>{formatearFecha(fecha)}</span></p>
+                        <p className='fecha-gasto'> Created on: {''} <span>{formatearFecha(fecha)}</span></p>
                     </div>
                 </div>
 

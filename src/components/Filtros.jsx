@@ -6,19 +6,19 @@ const Filtros = ({filtro, setFiltro}) => {
         <form 
         >
             <div className='campo'>
-                <label htmlFor="">Filtrar Gastos</label>
+                <label htmlFor="">Filter Expesnes</label>
                 <select 
                     value={filtro}
                     onChange={e => setFiltro(e.target.value)}
                 >
-                        <option value="">-- Seleccione --</option>
-                        <option value="ahorro">Ahorro</option>
-                        <option value="comida">Comida</option>
-                        <option value="casa">Casa</option>
-                        <option value="gastos">Gastos Varios</option>
-                        <option value="ocio">Ocio</option>
-                        <option value="salud">Salud</option>
-                        <option value="suscripciones">Suscripciones</option>
+                        <option value="">-- Select --</option>
+                        <option value="ahorro">Savings</option>
+                        <option value="comida">Food</option>
+                        <option value="casa">Home</option>
+                        <option value="gastos">Vairous</option>
+                        <option value="ocio">Leisure</option>
+                        <option value="salud">Health</option>
+                        <option value="suscripciones">Suscriptions</option>
                 </select>
             </div>
         </form>

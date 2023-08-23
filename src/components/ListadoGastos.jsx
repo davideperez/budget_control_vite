@@ -12,7 +12,7 @@ const ListadoGastos = ({
 
       { filtro ? (
         <>
-          <h2>{gastosFiltrados.length ? 'Gastos' : 'No hay gastos en esta categoría.'}</h2>
+          <h2>{gastosFiltrados.length ? 'Expenses' : 'No expenses in this category.'}</h2>
           {gastosFiltrados.map( gasto => (
               <Gasto 
                 key={gasto.id}
@@ -25,7 +25,7 @@ const ListadoGastos = ({
           
         ): (
           <>
-          <h2>{gastos.length ? 'Gastos' : 'No hay gastos ingresados aún.'}</h2>
+          <h2>{gastos.length ? 'Expenses' : 'There are no expenses registered yet.'}</h2>
           {gastos.map( gasto => (
               <Gasto 
                 key={gasto.id}

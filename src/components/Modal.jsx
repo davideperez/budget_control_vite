@@ -43,7 +43,7 @@ const Modal = ({
 
         //validation
         if ([nombre, cantidad, categoria].includes('')) {
-            setMensaje('Todos los campos son obligatorios.')
+            setMensaje('All fields are mandatory.')
             
             setTimeout(()=>{
                 setMensaje('')
@@ -70,7 +70,7 @@ const Modal = ({
                 onSubmit={handleSubmit}
                 className={`formulario ${animarModal ? 'animar' : 'cerrar'}`}
             >
-                <legend>{gastoEditar.nombre ? 'Editar Gasto' : 'Nuevo Gasto'}</legend>
+                <legend>{gastoEditar.nombre ? 'Edit Expense' : 'New Expense'}</legend>
                 { mensaje && <Mensaje tipo='error' >{ mensaje }</Mensaje> } 
                 <div className='campo'>
                     <label htmlFor="nombre">Nombre Gasto</label>
@@ -93,26 +93,26 @@ const Modal = ({
                     />
                 </div>
                 <div className='campo'>
-                    <label htmlFor="categoria">Categoria</label>
+                    <label htmlFor="categoria">Category</label>
                     
                     <select 
                         id="categoria"
                         value={categoria}
                         onChange={ e => setCategoria(e.target.value)}
                     >
-                        <option value="">-- Seleccione --</option>
-                        <option value="ahorro">Ahorro</option>
-                        <option value="comida">Comida</option>
-                        <option value="casa">Casa</option>
-                        <option value="gastos">Gastos Varios</option>
-                        <option value="ocio">Ocio</option>
-                        <option value="salud">Salud</option>
-                        <option value="suscripciones">Suscripciones</option>
+                        <option value="">-- Select --</option>
+                        <option value="ahorro">Savings</option>
+                        <option value="comida">Food</option>
+                        <option value="casa">Home</option>
+                        <option value="gastos">Vairous</option>
+                        <option value="ocio">Leisure</option>
+                        <option value="salud">Health</option>
+                        <option value="suscripciones">Suscriptions</option>
                     </select>
                 </div>
                 <input 
                     type="submit"
-                    value={gastoEditar.nombre ? 'Guardar Cambios' : 'Agregar Gasto'}
+                    value={gastoEditar.nombre ? 'Save Changes' : 'Add Expense'}
                 />
             </form>
         </div>

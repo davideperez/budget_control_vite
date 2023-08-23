@@ -65,7 +65,7 @@ function App() {
     if (presupuestoLS > 0) {
       setBudgetIsValid(true)
     }
-  }, [presupuesto])
+  }, [])
 
   const handleNuevoGasto = () => {
     setModal(true)
@@ -108,6 +108,7 @@ function App() {
 
       <Header
         gastos={gastos}
+        setGastos={setGastos}
         presupuesto={presupuesto}
         setPresupuesto={setPresupuesto}
         budgetIsValid={budgetIsValid}

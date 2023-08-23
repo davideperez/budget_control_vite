@@ -2,7 +2,13 @@ import { useState, useEffect } from 'react'
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar'
 import 'react-circular-progressbar/dist/styles.css'
 
-const ControlPresupuesto = ({gastos, presupuesto }) => {
+const ControlPresupuesto = ({
+    gastos,
+    setGastos,
+    presupuesto,
+    setPresupuesto,
+    setBudgetIsValid
+}) => {
 
     const [porcentaje, setPorcentaje] = useState(0)
     const [disponible, setDisponible] = useState(0)
@@ -19,7 +25,7 @@ const ControlPresupuesto = ({gastos, presupuesto }) => {
       
       setTimeout(() => {
           setPorcentaje(nuevoPorcentaje)
-      }, 1000);
+      }, 500);
 
     }, [gastos])
     
@@ -34,6 +40,17 @@ const ControlPresupuesto = ({gastos, presupuesto }) => {
         return cantidadConvertida
     }
 
+    const handleResetApp = () => {
+        const resultado = confirm('Do you really wish to reset the budget and the expenses?')
+
+        if (resultado) {
+            setGastos([])
+            setPresupuesto(0)
+            setBudgetIsValid(false)
+            
+        }
+    }
+
   return (
     <div className='contenedor-presupuesto contenedor sombra dos-columnas'>
         <div>
@@ -44,18 +61,26 @@ const ControlPresupuesto = ({gastos, presupuesto }) => {
                     textColor: porcentaje > 100 ? '#DC2626' : '#3B82F6',
                 })} 
                 value={porcentaje}
-                text={`${porcentaje}% Gastado`}
+                text={`${porcentaje}% Spent`}
             />
         </div>
         <div className='contenido-presupuesto'>
+            <button 
+                className='reset-app'
+                type='button'
+                onClick={()=>{handleResetApp()}}
+
+            >
+                Reset App
+            </button>
             <p>
-                <span>Presupuesto:</span> {formatearCantidad(presupuesto)}
+                <span>Budget:</span> {formatearCantidad(presupuesto)}
             </p>
             <p className={`${disponible < 0 ? 'negativo' : ' '}`}>
-                <span>Disponible:</span> {formatearCantidad(disponible)}
+                <span>Available:</span> {formatearCantidad(disponible)}
             </p>
             <p>
-                <span>Gastado:</span> {formatearCantidad(gastado)}
+                <span>Spent:</span> {formatearCantidad(gastado)}
             </p>
         </div>
     </div>
