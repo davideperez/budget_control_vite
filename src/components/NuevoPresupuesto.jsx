@@ -36,7 +36,7 @@ const NuevoPresupuesto = ({
                         onChange={ e => setPresupuesto(Number(e.target.value))}
                     />
                 </div>
-                <input type="submit" value='Añadir' />
+                <input type="submit" value='Add Budget' />
                 {mensaje &&  <Mensaje tipo="error" >{mensaje}</Mensaje>} 
             </form>
         </div>
